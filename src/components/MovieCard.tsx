@@ -1,14 +1,13 @@
-import {View, Text} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {Movie, MovieCardProps} from '../types';
+import {MovieCardProps} from '../types';
 import CustomImage from './CustomImage';
 
 const MovieCard: React.FC<MovieCardProps> = ({data}) => {
   return (
-    <View>
+    <TouchableOpacity>
       <CustomImage path={data?.poster_path} />
-      <Text className="text-white">{data?.title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

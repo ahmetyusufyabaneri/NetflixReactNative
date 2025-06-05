@@ -23,7 +23,7 @@ export const movieSlice = createSlice({
         state.topRatedMovies = action.payload;
       })
       .addCase(getTopRatedMoviesAction.rejected, (state, action) => {
-        state.error = action.payload;
+        state.error = action.error.message;
       });
   },
 });

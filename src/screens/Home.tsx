@@ -1,26 +1,33 @@
-import {View, Text, SafeAreaView, FlatList} from 'react-native';
+import {FlatList, SafeAreaView} from 'react-native';
 import React, {useEffect} from 'react';
 import Header from '../components/Header';
-import {useDispatch, useSelector} from 'react-redux';
+import Subheader from '../components/Subheader';
+import MovieSection from '../components/MovieSection';
+import {homeSections} from '../constants/homeSections';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {getTopRatedMoviesAction} from '../store/actions/movieAction';
-import MovieCard from '../components/MovieCard';
+import {getTopRatedTvShowsAction} from '../store/actions/tvShowAction';
 
 const Home: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const {topRatedMovies} = useSelector(state => state.rootReducer.movie);
-  console.log(topRatedMovies);
+  const {topRatedMovies} = useAppSelector(state => state.rootReducer.movie);
 
   useEffect(() => {
     dispatch(getTopRatedMoviesAction());
+    dispatch(getTopRatedTvShowsAction());
   }, []);
 
   return (
     <SafeAreaView className="container">
       <Header />
+      <Subheader />
       <FlatList
-        data={topRatedMovies}
-        renderItem={({item}) => <MovieCard data={item} />}
+        data={homeSections}
+        renderItem={({item}) => (
+          <MovieSection data={item} movies={topRatedMovies} />
+        )}
+        contentContainerClassName="gap-8"
       />
     </SafeAreaView>
   );
