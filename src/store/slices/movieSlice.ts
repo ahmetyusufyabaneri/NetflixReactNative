@@ -1,11 +1,15 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {getTopRatedMoviesAction} from '../actions/movieAction';
-import {MovieSliceTypes} from '../../types';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {
+  getPopularMoviesAction,
+  getTopRatedMoviesAction,
+} from '../actions/movieAction';
+import {Movie, MovieSliceTypes} from '../../types';
 
 const initialState: MovieSliceTypes = {
   pending: false,
   error: null,
   topRatedMovies: [],
+  popularMovies: [],
 };
 
 export const movieSlice = createSlice({
@@ -17,12 +21,29 @@ export const movieSlice = createSlice({
       .addCase(getTopRatedMoviesAction.pending, state => {
         state.pending = true;
       })
-      .addCase(getTopRatedMoviesAction.fulfilled, (state, action) => {
-        state.pending = false;
+      .addCase(
+        getTopRatedMoviesAction.fulfilled,
+        (state, action: PayloadAction<Movie[]>) => {
+          state.pending = false;
 
-        state.topRatedMovies = action.payload;
+          state.topRatedMovies = action.payload;
+        },
+      )
+      .addCase(getTopRatedMoviesAction.rejected, (state, action: any) => {
+        state.error = action.error.message;
       })
-      .addCase(getTopRatedMoviesAction.rejected, (state, action) => {
+      .addCase(getPopularMoviesAction.pending, state => {
+        state.pending = true;
+      })
+      .addCase(
+        getPopularMoviesAction.fulfilled,
+        (state, action: PayloadAction<Movie[]>) => {
+          state.pending = false;
+
+          state.popularMovies = action.payload;
+        },
+      )
+      .addCase(getPopularMoviesAction.rejected, (state, action: any) => {
         state.error = action.error.message;
       });
   },

@@ -5,4 +5,5 @@ export enum screenNames {
   NewHot = 'New & Hot',
   FastLoughts = 'Fast Loughts',
   Downloads = 'Downloads',
+  MovieDetail = 'MovieDetail',
 }

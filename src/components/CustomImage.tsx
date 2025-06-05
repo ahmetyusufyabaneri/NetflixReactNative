@@ -1,4 +1,4 @@
-import {Image} from 'react-native';
+import {Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {imageBaseUrl} from '../services/constants/url';
 import {CustomImageProps} from '../types';

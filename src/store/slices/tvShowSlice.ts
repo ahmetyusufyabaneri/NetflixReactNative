@@ -1,12 +1,15 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {TVShow, TvShowSliceTypes} from '../../types';
-import {getTopRatedTvShowsAction} from '../actions/tvShowAction';
-import {getTopRatedMoviesAction} from '../actions/movieAction';
+import {
+  getPopularTvShowsAction,
+  getTopRatedTvShowsAction,
+} from '../actions/tvShowAction';
 
 const initialState: TvShowSliceTypes = {
   pending: false,
   error: null,
   topRatedTvShows: [],
+  popularTvShows: [],
 };
 
 export const tvShowSlice = createSlice({
@@ -26,7 +29,21 @@ export const tvShowSlice = createSlice({
           state.topRatedTvShows = action.payload;
         },
       )
-      .addCase(getTopRatedMoviesAction.rejected, (state, action: any) => {
+      .addCase(getTopRatedTvShowsAction.rejected, (state, action: any) => {
+        state.error = action.error.message;
+      })
+      .addCase(getPopularTvShowsAction.pending, state => {
+        state.pending = true;
+      })
+      .addCase(
+        getPopularTvShowsAction.fulfilled,
+        (state, action: PayloadAction<TVShow[]>) => {
+          state.pending = false;
+
+          state.popularTvShows = action.payload;
+        },
+      )
+      .addCase(getPopularTvShowsAction.rejected, (state, action: any) => {
         state.error = action.error.message;
       });
   },

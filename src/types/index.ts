@@ -1,4 +1,6 @@
-export interface Movie {
+import {homeSectionsNames} from '../constants/homeSections';
+
+export type Movie = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -13,9 +15,9 @@ export interface Movie {
   video: boolean;
   vote_average: number;
   vote_count: number;
-}
+};
 
-export interface TVShow {
+export type TVShow = {
   adult: boolean;
   backdrop_path: string;
   first_air_date: string;
@@ -30,38 +32,44 @@ export interface TVShow {
   poster_path: string;
   vote_average: number;
   vote_count: number;
-}
+};
 
-export interface MovieSliceTypes {
+export type MovieSliceTypes = {
   pending: boolean;
   error: string | null | undefined;
   topRatedMovies: Movie[];
-}
+  popularMovies: Movie[];
+};
 
-export interface TvShowSliceTypes {
+export type TvShowSliceTypes = {
   pending: boolean;
   error: string | null | undefined;
   topRatedTvShows: TVShow[];
-}
+  popularTvShows: any;
+};
 
-export interface HomeSections {
+export type HomeSections = {
   id: number;
   title: string;
-}
+  section: homeSectionsNames;
+};
 
-export interface MovieCardProps {
+export type MovieCardProps = {
   data: Movie;
-}
+};
 
-export interface CustomImageProps {
+export type CustomImageProps = {
   path: string;
-}
+};
 
-export interface SectionTitleProps {
+export type SectionTitleProps = {
   title: string;
-}
+};
 
-export interface MovieSectionProps {
+export type MovieSectionProps = {
   data: HomeSections;
-  movies: Movie[];
-}
+};
+
+export type RootNavigatorScreens = {
+  MovieDetail: {movie: object};
+};
