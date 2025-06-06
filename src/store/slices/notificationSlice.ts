@@ -3,7 +3,13 @@ import {NotificationSliceTypes} from '../../types';
 
 const initialState: NotificationSliceTypes = {
   pending: false,
-  notifications: [],
+  notifications: [
+    {
+      title: 'Merhaba',
+      time: '12.30',
+      path: '/merhaba',
+    },
+  ],
 };
 
 export const notificationSlice = createSlice({

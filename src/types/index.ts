@@ -240,6 +240,10 @@ export type MovieSectionProps = {
   data: HomeSections;
 };
 
+export type NotificationCardProps = {
+  data: Notification;
+};
+
 export type RootNavigatorScreens = {
   MovieDetail: {movie: Movie | TVShow; type: contentType};
 };

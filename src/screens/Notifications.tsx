@@ -1,6 +1,7 @@
 import {SafeAreaView, FlatList, Text} from 'react-native';
 import React from 'react';
 import {useAppSelector} from '../store/hooks';
+import NotificationCard from '../components/NotificationCard';
 
 const Notifications: React.FC = () => {
   const {pending, notifications} = useAppSelector(
@@ -8,10 +9,10 @@ const Notifications: React.FC = () => {
   );
 
   return (
-    <SafeAreaView>
+    <SafeAreaView className="container">
       <FlatList
         data={notifications}
-        renderItem={({item}) => <Text>Notification</Text>}
+        renderItem={({item}) => <NotificationCard data={item} />}
       />
     </SafeAreaView>
   );
