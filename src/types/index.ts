@@ -35,6 +35,12 @@ export type TVShow = {
   vote_count: number;
 };
 
+export type Notification = {
+  title: string;
+  time: string;
+  path: string;
+};
+
 export type MovieDetailGenre = {
   id: number;
   name: string;
@@ -201,6 +207,11 @@ export type TvShowSliceTypes = {
   topRatedTvShows: TVShow[];
   popularTvShows: TVShow[];
   tvShowDetail: TVShowDetail | null;
+};
+
+export type NotificationSliceTypes = {
+  pending: boolean;
+  notifications: Notification[];
 };
 
 export type HomeSections = {
