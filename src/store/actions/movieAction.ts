@@ -22,3 +22,11 @@ export const getPopularMoviesAction = createAsyncThunk<Movie[], void>(
     return response?.data?.results as Movie[];
   },
 );
+
+export const getMovieDetailAction = createAsyncThunk<Movie[], number>(
+  'movies/getMovieDetail',
+  async (id: number) => {
+    const response = await getRequest(`${movieUrl}/${id}`);
+    return response?.data;
+  },
+);

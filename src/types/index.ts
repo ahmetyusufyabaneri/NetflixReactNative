@@ -39,6 +39,7 @@ export type MovieSliceTypes = {
   error: string | null | undefined;
   topRatedMovies: Movie[];
   popularMovies: Movie[];
+  movieDetail: object;
 };
 
 export type TvShowSliceTypes = {
@@ -72,4 +73,8 @@ export type MovieSectionProps = {
 
 export type RootNavigatorScreens = {
   MovieDetail: {movie: object};
+};
+
+export type RootStackParamList = {
+  MovieDetail: {movie: Movie | TVShow};
 };

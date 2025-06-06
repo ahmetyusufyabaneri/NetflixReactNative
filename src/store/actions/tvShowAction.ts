@@ -10,7 +10,7 @@ export const getTopRatedTvShowsAction = createAsyncThunk<TVShow[], void>(
   'tvShows/getTopRatedTvShows',
   async () => {
     const response = await getRequest(topRatedTvShowsUrl);
-    return response?.data?.results;
+    return response?.data?.results as TVShow[];
   },
 );
 
@@ -18,6 +18,6 @@ export const getPopularTvShowsAction = createAsyncThunk<TVShow[], void>(
   'tvShows/getPopularTvShows',
   async () => {
     const response = await getRequest(popularTvShowsUrl);
-    return response?.data?.results;
+    return response?.data?.results as TVShow[];
   },
 );
