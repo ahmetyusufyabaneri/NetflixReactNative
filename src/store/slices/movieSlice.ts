@@ -4,14 +4,14 @@ import {
   getPopularMoviesAction,
   getTopRatedMoviesAction,
 } from '../actions/movieAction';
-import {Movie, MovieSliceTypes} from '../../types';
+import {Movie, MovieDetail, MovieSliceTypes} from '../../types';
 
 const initialState: MovieSliceTypes = {
   pending: false,
   error: null,
   topRatedMovies: [],
   popularMovies: [],
-  movieDetail: {},
+  movieDetail: null,
 };
 
 export const movieSlice = createSlice({
@@ -51,11 +51,14 @@ export const movieSlice = createSlice({
       .addCase(getMovieDetailAction.pending, state => {
         state.pending = true;
       })
-      .addCase(getMovieDetailAction.fulfilled, (state, action) => {
-        state.pending = false;
+      .addCase(
+        getMovieDetailAction.fulfilled,
+        (state, action: PayloadAction<MovieDetail>) => {
+          state.pending = false;
 
-        state.movieDetail = action.payload;
-      })
+          state.movieDetail = action.payload;
+        },
+      )
       .addCase(getMovieDetailAction.rejected, (state, action: any) => {
         state.error = action.error.message;
       });

@@ -3,8 +3,9 @@ import {getRequest} from '../../services/requests';
 import {
   popularTvShowsUrl,
   topRatedTvShowsUrl,
+  tvUrl,
 } from '../../services/constants/url';
-import {TVShow} from '../../types';
+import {TVShow, TVShowDetail} from '../../types';
 
 export const getTopRatedTvShowsAction = createAsyncThunk<TVShow[], void>(
   'tvShows/getTopRatedTvShows',
@@ -19,5 +20,13 @@ export const getPopularTvShowsAction = createAsyncThunk<TVShow[], void>(
   async () => {
     const response = await getRequest(popularTvShowsUrl);
     return response?.data?.results as TVShow[];
+  },
+);
+
+export const getTvShowDetailAction = createAsyncThunk<TVShowDetail, number>(
+  'tvShows/getTvShowDetail',
+  async (id: number) => {
+    const response = await getRequest(`${tvUrl}/${id}`);
+    return response?.data as TVShowDetail;
   },
 );

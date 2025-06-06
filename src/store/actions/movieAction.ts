@@ -5,7 +5,7 @@ import {
   popularMoviesUrl,
   topRatedMoviesUrl,
 } from '../../services/constants/url';
-import {Movie} from '../../types';
+import {Movie, MovieDetail} from '../../types';
 
 export const getTopRatedMoviesAction = createAsyncThunk<Movie[], void>(
   'movies/getTopRatedMovies',
@@ -23,10 +23,10 @@ export const getPopularMoviesAction = createAsyncThunk<Movie[], void>(
   },
 );
 
-export const getMovieDetailAction = createAsyncThunk<Movie[], number>(
+export const getMovieDetailAction = createAsyncThunk<MovieDetail, number>(
   'movies/getMovieDetail',
   async (id: number) => {
     const response = await getRequest(`${movieUrl}/${id}`);
-    return response?.data;
+    return response?.data as MovieDetail;
   },
 );

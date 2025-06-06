@@ -51,9 +51,9 @@ const MovieSection: React.FC<MovieSectionProps> = ({data}) => {
   return (
     <View>
       <SectionTitle title={data.title} />
-      <FlatList
+      <FlatList<any>
         data={returnData()}
-        renderItem={({item}) => <MovieCard data={item} />}
+        renderItem={({item}) => <MovieCard data={item} content={data.type} />}
         horizontal
       />
     </View>

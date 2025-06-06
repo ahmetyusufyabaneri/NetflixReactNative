@@ -11,3 +11,5 @@ export const topRatedTvShowsUrl = '/tv/top_rated';
 export const popularTvShowsUrl = '/tv/popular';
 
 export const movieUrl = '/movie';
+
+export const tvUrl = '/tv';

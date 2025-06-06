@@ -1,4 +1,4 @@
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import React from 'react';
 import {MovieCardProps, RootNavigatorScreens} from '../types';
 import CustomImage from './CustomImage';
@@ -11,15 +11,18 @@ type NavigationProps = NativeStackNavigationProp<
   'MovieDetail'
 >;
 
-const MovieCard: React.FC<MovieCardProps> = ({data}) => {
+const MovieCard: React.FC<MovieCardProps> = ({data, content}) => {
   const navigation = useNavigation<NavigationProps>();
 
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate(screenNames.MovieDetail, {movie: data})
+        navigation.navigate(screenNames.MovieDetail, {
+          movie: data,
+          type: content,
+        })
       }>
-      <CustomImage path={data?.poster_path} />
+      <CustomImage path={data?.poster_path} width={144} height={192} />
     </TouchableOpacity>
   );
 };

@@ -6,4 +6,10 @@ export enum screenNames {
   FastLoughts = 'Fast Loughts',
   Downloads = 'Downloads',
   MovieDetail = 'MovieDetail',
+  Notifications = 'Notifications',
+}
+
+export enum contentType {
+  Movie = 'Movie',
+  TvShow = 'TvShow',
 }

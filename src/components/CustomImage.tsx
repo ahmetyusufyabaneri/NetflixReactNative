@@ -1,13 +1,15 @@
-import {Image, TouchableOpacity} from 'react-native';
+import {Image} from 'react-native';
 import React from 'react';
 import {imageBaseUrl} from '../services/constants/url';
 import {CustomImageProps} from '../types';
 
-const CustomImage: React.FC<CustomImageProps> = ({path}) => {
+const CustomImage: React.FC<CustomImageProps> = ({path, width, height}) => {
   return (
     <Image
       source={{uri: `${imageBaseUrl}${path}`}}
-      className="w-36 h-48 rounded-xl"
+      width={width}
+      height={height}
+      className="rounded-xl"
       resizeMode="contain"
     />
   );

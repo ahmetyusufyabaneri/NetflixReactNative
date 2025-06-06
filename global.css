@@ -9,4 +9,10 @@
   .subheader-title {
     @apply text-white text-2xl font-semibold;
   }
+  .genreText {
+    @apply text-softGrey text-lg;
+  }
+  .button {
+    @apply flex-row items-center justify-center gap-1 py-4 rounded-md;
+  }
 }
