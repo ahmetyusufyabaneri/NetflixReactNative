@@ -37,7 +37,9 @@ export type TVShow = {
 
 export type Notification = {
   title: string;
+  description: string;
   time: string;
+  read: boolean;
   path: string;
 };
 
@@ -212,6 +214,7 @@ export type TvShowSliceTypes = {
 export type NotificationSliceTypes = {
   pending: boolean;
   notifications: Notification[];
+  notificationCount: number;
 };
 
 export type HomeSections = {

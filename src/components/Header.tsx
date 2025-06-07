@@ -7,11 +7,16 @@ import {useNavigation} from '@react-navigation/native';
 import {screenNames} from '../constants';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types';
+import {useAppSelector} from '../store/hooks';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const Header: React.FC = () => {
   const navigation = useNavigation<NavigationProp>();
+
+  const {notificationCount} = useAppSelector(
+    state => state.rootReducer.notification,
+  );
 
   return (
     <View className="flex-row items-center justify-between pr-2">
@@ -28,9 +33,11 @@ const Header: React.FC = () => {
             size={32}
             color={colors.white}
           />
-          <View className="bg-red w-5 h-5 absolute -top-1 -right-1 rounded-full items-center justify-center">
-            <Text className="text-white">1</Text>
-          </View>
+          {notificationCount !== 0 && (
+            <View className="bg-red w-5 h-5 absolute -top-1 -right-1 rounded-full items-center justify-center">
+              <Text className="text-white">{notificationCount}</Text>
+            </View>
+          )}
         </TouchableOpacity>
         <TouchableOpacity>
           <Feather name="search" size={32} color={colors.white} />

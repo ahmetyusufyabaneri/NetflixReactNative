@@ -5,11 +5,21 @@ const initialState: NotificationSliceTypes = {
   pending: false,
   notifications: [
     {
-      title: 'Merhaba',
-      time: '12.30',
-      path: '/merhaba',
+      title: 'Notification 1',
+      description: 'First notification here',
+      time: '7 Jun',
+      read: false,
+      path: '/first',
+    },
+    {
+      title: 'Notification 2',
+      description: 'Second notification here',
+      time: '28 May',
+      read: true,
+      path: '/second',
     },
   ],
+  notificationCount: 2,
 };
 
 export const notificationSlice = createSlice({
