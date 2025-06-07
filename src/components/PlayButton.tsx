@@ -3,7 +3,7 @@ import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../themes/colors';
 
-const PlayButton = () => {
+const PlayButton: React.FC = () => {
   return (
     <TouchableOpacity className="button bg-white">
       <Ionicons name="play" size={24} color={colors.black} />

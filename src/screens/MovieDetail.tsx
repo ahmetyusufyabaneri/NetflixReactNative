@@ -17,6 +17,8 @@ import Feather from 'react-native-vector-icons/Feather';
 import {colors} from '../themes/colors';
 import PlayButton from '../components/PlayButton';
 import DownloadButton from '../components/DownloadButton';
+import Loader from '../components/Loader';
+import Error from '../components/Error';
 
 type MovieDetailRouteProp = RouteProp<RootStackParamList, 'MovieDetail'>;
 
@@ -47,10 +49,10 @@ const MovieDetail: React.FC = () => {
 
   return (
     <SafeAreaView className="container">
-      {true ? (
-        <Text>Pending..</Text>
+      {pending ? (
+        <Loader />
       ) : error ? (
-        <Text>Error</Text>
+        <Error />
       ) : (
         <>
           <TouchableOpacity onPress={() => navigation.goBack()}>
