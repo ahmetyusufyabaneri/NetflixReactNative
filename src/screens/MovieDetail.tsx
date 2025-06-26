@@ -32,10 +32,8 @@ const MovieDetail: React.FC = () => {
   const {movieDetail, pending, error} = useAppSelector(
     state => state.rootReducer.movie,
   );
-  console.log('movieDetail:', movieDetail);
 
   const {tvShowDetail} = useAppSelector(state => state.rootReducer.tvShow);
-  console.log('tvShowDetail:', tvShowDetail);
 
   useEffect(() => {
     if (type == contentType.Movie) {

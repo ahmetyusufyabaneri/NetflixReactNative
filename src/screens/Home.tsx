@@ -15,10 +15,8 @@ const Home: React.FC = () => {
       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
     if (enabled) {
-      console.log('Authorization status:', authStatus);
       await messaging().registerDeviceForRemoteMessages();
       const token = await messaging().getToken();
-      console.log('Token:', token);
     }
   };
 
